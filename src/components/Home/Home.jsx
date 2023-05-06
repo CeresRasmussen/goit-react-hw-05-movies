@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchPopularMovie } from '../../services/api-fetches';
 import { Link, useLocation } from 'react-router-dom';
-
 // import css from 'components/Home/Home.module.css';
 
 const Home = () => {
