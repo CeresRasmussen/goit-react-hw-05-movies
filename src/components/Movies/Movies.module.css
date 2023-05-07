@@ -1,6 +1,5 @@
 .container {
   max-width: 1280px;
-  height: 100vh;
   margin: 0 auto;
   padding: 74px 10px;
 }
@@ -113,4 +112,9 @@
   object-fit: cover;
   max-width: 250px;
   height: 375px;
+}
+div[data-testid='three-circles-wrapper'] {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }

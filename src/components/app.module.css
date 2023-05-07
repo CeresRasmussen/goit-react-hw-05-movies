@@ -1,5 +1,5 @@
 .container {
-  height: calc(100vh);
+  height: 100%;
 }
 .navigate {
   display: flex;

@@ -14,7 +14,6 @@ const Reviews = () => {
       const {
         data: { results },
       } = await fetchReviews(movie_id);
-      console.log(results);
       setReviews(results);
       setLoading(false);
     };
