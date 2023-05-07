@@ -22,30 +22,27 @@ const Cast = () => {
 
   return (
     <>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
+      {loading && <p>Loading...</p>}
+      {cast.length > 0 && (
         <ul className={css.castList}>
-          {cast.map(actor => {
-            return (
-              <li key={actor.cast_id} className={css.castItem}>
-                {actor.profile_path ? (
-                  <img
-                    src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
-                    alt={actor.name}
-                    width={200}
-                  />
-                ) : (
-                  <div className={css.noImage}>
-                    <p>No Image</p>
-                  </div>
-                )}
+          {cast.map(actor => (
+            <li key={actor.cast_id} className={css.castItem}>
+              {actor.profile_path ? (
+                <img
+                  src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
+                  alt={actor.name}
+                  width={200}
+                />
+              ) : (
+                <div className={css.noImage}>
+                  <p>No Image</p>
+                </div>
+              )}
 
-                <p>{actor.name}</p>
-                <p>Character: {actor.character}</p>
-              </li>
-            );
-          })}
+              <p>{actor.name}</p>
+              <p>Character: {actor.character}</p>
+            </li>
+          ))}
         </ul>
       )}
     </>

@@ -11,7 +11,7 @@ const MovieDetails = () => {
   const { movieid: movie_id } = useParams();
 
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/Home';
+  const backLinkHref = location.state?.from ?? '/';
 
   const [movie, setMovie] = useState([]);
   useEffect(() => {
@@ -36,11 +36,14 @@ const MovieDetails = () => {
       ) : (
         <>
           <div>
-            <img
-              src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
-              alt={movie.title}
-              width={200}
-            />
+            {movie.poster_path && (
+              <img
+                src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+                alt={movie.title}
+                width={200}
+              />
+            )}
+
             <h2>{movie.original_title}</h2>
             <p>User Score: {movie.vote_average * 10}%</p>
             <h3>Overview</h3>
