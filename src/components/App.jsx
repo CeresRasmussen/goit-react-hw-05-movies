@@ -1,6 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes, NavLink } from 'react-router-dom';
-import { Loader } from './Loader/Loader';
+// import { Loader } from './Loader/Loader';
 import css from 'components/app.module.css';
 import styled from 'styled-components';
 
@@ -31,7 +31,7 @@ export const App = () => {
         </nav>
       </header>
 
-      <Suspense fallback={<Loader></Loader>}>
+      <Suspense>
         <Routes>
           <Route index path="/" element={<Home />} />
           <Route path="/Movies" element={<Movies />} />
