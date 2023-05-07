@@ -23,7 +23,6 @@ const Movies = () => {
           data: { results },
         } = await fetchMovieByQuery(query);
         setMovie(results);
-        console.log('data:', results);
 
         setLoading(false);
       };

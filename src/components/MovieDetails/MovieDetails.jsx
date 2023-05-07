@@ -22,7 +22,6 @@ const MovieDetails = () => {
       setMovie(data);
       setLoading(false);
       setGenres(data.genres);
-      console.log('movie:', data);
     };
 
     fetchData();

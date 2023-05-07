@@ -17,7 +17,6 @@ const Home = () => {
       } = await fetchPopularMovie();
       setPopularMovie(results);
       setLoading(false);
-      console.log('results:', results);
     }
 
     fetchData();
