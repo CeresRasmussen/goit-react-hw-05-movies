@@ -39,3 +39,13 @@ export const fetchReviews = async movie_id => {
     throw error;
   }
 };
+
+export const fetchMovieByQuery = async query => {
+  try {
+    return await axios.get(
+      `${BASE_URL}search/movie?api_key=${KEY}&language=en-US&query=${query}&page=1&include_adult=false`
+    );
+  } catch (error) {
+    throw error;
+  }
+};
