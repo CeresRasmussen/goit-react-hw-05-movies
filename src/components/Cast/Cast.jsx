@@ -34,9 +34,12 @@ const Cast = () => {
                   width={200}
                 />
               ) : (
-                <div className={css.noImage}>
-                  <p>No Image</p>
-                </div>
+                <img
+                  src={`https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg`}
+                  alt={actor.name}
+                  width={200}
+                  className={css.noImage}
+                />
               )}
 
               <p>{actor.name}</p>

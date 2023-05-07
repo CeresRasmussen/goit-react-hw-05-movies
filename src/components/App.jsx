@@ -20,7 +20,7 @@ const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   return (
-    <>
+    <div className={css.container}>
       <header>
         <nav className={css.navigate}>
           <StyledLink to="/" end>
@@ -41,6 +41,6 @@ export const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
-    </>
+    </div>
   );
 };

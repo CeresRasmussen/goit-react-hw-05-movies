@@ -29,27 +29,28 @@ const MovieDetails = () => {
   }, [movie_id]);
 
   return (
-    <div>
-      <BackLink to={backLinkHref}>Back to products</BackLink>
+    <div className={css.container}>
+      <BackLink to={backLinkHref}>Go Back</BackLink>
       {loading ? (
         <p>Loading...</p>
       ) : (
         <>
-          <div>
+          <div className={css.movieContainer}>
             {movie.poster_path && (
               <img
-                src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                 alt={movie.title}
-                width={200}
+                width={350}
               />
             )}
-
-            <h2>{movie.original_title}</h2>
-            <p>User Score: {movie.vote_average * 10}%</p>
-            <h3>Overview</h3>
-            <p>{movie.overview}</p>
-            <h3>Genres</h3>
-            <p>{genres.map(genre => genre.name).join(', ')}</p>
+            <div>
+              <h2>{movie.original_title}</h2>
+              <p>User Score: {movie.vote_average * 10}%</p>
+              <h3>Overview</h3>
+              <p>{movie.overview}</p>
+              <h3>Genres</h3>
+              <p>{genres.map(genre => genre.name).join(', ')}</p>
+            </div>
           </div>
           <div className={css.detailsLinks}>
             <Link to="Cast" state={{ from: backLinkHref }}>

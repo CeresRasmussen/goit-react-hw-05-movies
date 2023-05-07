@@ -1,4 +1,21 @@
+.container {
+  max-width: 1280px;
+  height: 100%;
+  margin: 25px auto;
+  padding: 0 25px;
+}
+
 .detailsLinks {
   display: flex;
   flex-direction: column;
+}
+
+.movieContainer {
+  display: flex;
+  gap: 25px;
+  flex-direction: row;
+}
+
+.movieDescription {
+  display: flex;
 }
