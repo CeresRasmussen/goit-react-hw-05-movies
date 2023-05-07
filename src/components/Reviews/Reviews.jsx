@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchReviews } from 'services/api-fetches';
+import { Loader } from 'components/Loader/Loader';
 
 const Reviews = () => {
   const { movieid: movie_id } = useParams();
@@ -24,7 +25,7 @@ const Reviews = () => {
   return (
     <>
       {loading ? (
-        <p>Loading...</p>
+        <Loader></Loader>
       ) : (
         <ul>
           {reviews.length !== 0 ? (

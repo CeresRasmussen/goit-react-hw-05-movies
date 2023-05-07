@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { fetchMovieByQuery } from 'services/api-fetches';
-// import { Searchbar } from 'components/Searchbar/Searchbar';
 import { Link, useLocation } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
+import { Loader } from 'components/Loader/Loader';
 import css from 'components/Movies/Movies.module.css';
 
 const initialValue = { query: '' };
@@ -59,7 +59,7 @@ const Movies = () => {
       </div>
       <div>
         {loading ? (
-          <p>Loading...</p>
+          <Loader></Loader>
         ) : (
           <>
             <ul className={css.moviesList}>

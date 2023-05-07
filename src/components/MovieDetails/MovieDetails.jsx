@@ -1,6 +1,7 @@
 import { useEffect, useState, lazy, Suspense } from 'react';
 import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
 import { fetchMovieById } from 'services/api-fetches';
+import { Loader } from 'components/Loader/Loader';
 
 import css from 'components/MovieDetails/MovieDetails.module.css';
 const BackLink = lazy(() => import('../BackLink/BackLink'));
@@ -30,11 +31,11 @@ const MovieDetails = () => {
 
   return (
     <div className={css.container}>
-      <BackLink to={backLinkHref}>Go Back</BackLink>
       {loading ? (
-        <p>Loading...</p>
+        <Loader></Loader>
       ) : (
         <>
+          <BackLink to={backLinkHref}>Go Back</BackLink>
           <div className={css.movieContainer}>
             {movie.poster_path && (
               <img
@@ -60,7 +61,7 @@ const MovieDetails = () => {
               Reviews
             </Link>
           </div>
-          <Suspense fallback={<div>Loading ...</div>}>
+          <Suspense fallback={<Loader></Loader>}>
             <Outlet />
           </Suspense>
         </>

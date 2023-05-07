@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchPopularMovie } from '../../services/api-fetches';
 import { Link, useLocation } from 'react-router-dom';
 import css from 'components/Home/Home.module.css';
+import { Loader } from 'components/Loader/Loader';
 
 const Home = () => {
   const location = useLocation();
@@ -24,7 +25,7 @@ const Home = () => {
   return (
     <div className={css.container}>
       {loading ? (
-        <p>Loading...</p>
+        <Loader></Loader>
       ) : (
         <>
           <h1 className={css.title}>Trending today</h1>

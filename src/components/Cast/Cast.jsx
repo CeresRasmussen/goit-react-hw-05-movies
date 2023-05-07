@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { fetchCast } from 'services/api-fetches';
 import { useParams } from 'react-router-dom';
+import { Loader } from 'components/Loader/Loader';
 import css from 'components/Cast/Cast.module.css';
+
 const Cast = () => {
   const { movieid: movie_id } = useParams();
   const [loading, setLoading] = useState(false);
@@ -22,7 +24,7 @@ const Cast = () => {
 
   return (
     <>
-      {loading && <p>Loading...</p>}
+      {loading && <Loader></Loader>}
       {cast.length > 0 && (
         <ul className={css.castList}>
           {cast.map(actor => (
