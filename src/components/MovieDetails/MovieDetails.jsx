@@ -51,11 +51,20 @@ const MovieDetails = () => {
         <>
           <BackLink to={backLinkHref}>Go Back</BackLink>
           <div className={css.movieContainer}>
-            {movie.poster_path && (
+            {movie.poster_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                 alt={movie.title}
                 width={350}
+              />
+            ) : (
+              <img
+                src={
+                  'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
+                }
+                alt={movie.title}
+                width={350}
+                className={css.noImage}
               />
             )}
             {movie.release_date && (

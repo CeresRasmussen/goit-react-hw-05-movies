@@ -57,3 +57,8 @@ div[data-testid='three-circles-wrapper'] {
   background-color: orange;
   border-color: aliceblue;
 }
+.noImage {
+  object-fit: cover;
+  max-width: 350px;
+  height: 525px;
+}
