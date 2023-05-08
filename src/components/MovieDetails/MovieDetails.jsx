@@ -1,10 +1,24 @@
 import { useEffect, useState, lazy, Suspense } from 'react';
-import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
+import { useParams, useLocation, NavLink, Outlet } from 'react-router-dom';
 import { fetchMovieById } from 'services/api-fetches';
 import { Loader } from 'components/Loader/Loader';
+import styled from 'styled-components';
 
 import css from 'components/MovieDetails/MovieDetails.module.css';
 const BackLink = lazy(() => import('../BackLink/BackLink'));
+
+const StyledLink = styled(NavLink)`
+  display: flex;
+  color: black;
+  align-items: center;
+}
+
+  &.active {
+    color: aliceblue;
+    background-color: orange;
+    border-color: aliceblue;
+  }
+`;
 
 const MovieDetails = () => {
   const [genres, setGenres] = useState([]);
@@ -15,6 +29,7 @@ const MovieDetails = () => {
   const backLinkHref = location.state?.from ?? '/';
 
   const [movie, setMovie] = useState([]);
+
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
@@ -43,23 +58,36 @@ const MovieDetails = () => {
                 width={350}
               />
             )}
-            <div>
-              <h2>{movie.original_title}</h2>
-              <p>User Score: {movie.vote_average * 10}%</p>
-              <h3>Overview</h3>
-              <p>{movie.overview}</p>
-              <h3>Genres</h3>
-              <p>{genres.map(genre => genre.name).join(', ')}</p>
-            </div>
+            {movie.release_date && (
+              <div>
+                <h2 className={css.movieTitle}>
+                  {movie.original_title} ({movie.release_date.slice(0, 4)})
+                </h2>
+                <p>User Score: {Math.ceil(movie.vote_average * 10)}%</p>
+                <h3 className={css.subTitle}>Overview</h3>
+                <p>{movie.overview}</p>
+                <h3 className={css.subTitle}>Genres</h3>
+                <p>{genres.map(genre => genre.name).join(', ')}</p>
+                <div className={css.detailsLinks}>
+                  <StyledLink
+                    to="Cast"
+                    state={{ from: backLinkHref }}
+                    className={css.moreInfo}
+                  >
+                    Cast
+                  </StyledLink>
+                  <StyledLink
+                    to="Reviews"
+                    state={{ from: backLinkHref }}
+                    className={css.moreInfo}
+                  >
+                    Reviews
+                  </StyledLink>
+                </div>
+              </div>
+            )}
           </div>
-          <div className={css.detailsLinks}>
-            <Link to="Cast" state={{ from: backLinkHref }}>
-              Cast
-            </Link>
-            <Link to="Reviews" state={{ from: backLinkHref }}>
-              Reviews
-            </Link>
-          </div>
+
           <Suspense fallback={<Loader></Loader>}>
             <Outlet />
           </Suspense>

@@ -15,12 +15,23 @@ const Home = () => {
       const {
         data: { results },
       } = await fetchPopularMovie();
-      setPopularMovie(results);
+      setPopularMovie(normalizationData(results));
       setLoading(false);
     }
 
     fetchData();
   }, []);
+
+  const normalizationData = results =>
+    results.map(({ title, id, poster_path }) => {
+      const data = {
+        title,
+        id,
+        poster: poster_path,
+      };
+      return data;
+    });
+
   return (
     <div className={css.container}>
       {loading ? (
@@ -29,12 +40,12 @@ const Home = () => {
         <>
           <h1 className={css.title}>Trending today</h1>
           <ul className={css.moviesList}>
-            {popularMovie.map(({ original_title, id, poster_path, title }) => (
+            {popularMovie.map(({ id, poster, title }) => (
               <li key={id} className={css.movieItem}>
                 <Link to={`/Movies/${id}`} state={{ from: location }}>
-                  {poster_path ? (
+                  {poster ? (
                     <img
-                      src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                      src={`https://image.tmdb.org/t/p/w500/${poster}`}
                       alt={title}
                       width={250}
                       className={css.movieImage}
@@ -49,7 +60,9 @@ const Home = () => {
                       className={css.noImage}
                     />
                   )}
-                  <p className={css.movieTitle}>{original_title}</p>
+                  <span className={css.movieDescription}>
+                    <p className={css.movieTitle}>{title}</p>
+                  </span>
                 </Link>
               </li>
             ))}

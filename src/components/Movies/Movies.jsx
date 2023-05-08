@@ -22,13 +22,24 @@ const Movies = () => {
         const {
           data: { results },
         } = await fetchMovieByQuery(query);
-        setMovie(results);
+        setMovie(normalizationData(results));
 
         setLoading(false);
       };
       getMovie(query);
     }
   }, [query, searchParam]);
+
+  const normalizationData = results =>
+    results.map(({ title, id, poster_path, release_date }) => {
+      const data = {
+        title,
+        id,
+        poster: poster_path,
+        date: release_date ? release_date.slice(0, 4) : '',
+      };
+      return data;
+    });
 
   const onSubmit = ({ query }, { resetForm }) => {
     setQuery(query);
@@ -62,12 +73,12 @@ const Movies = () => {
         ) : (
           <>
             <ul className={css.moviesList}>
-              {movie.map(({ original_title, id, poster_path, title }) => (
+              {movie.map(({ id, poster, title, date }) => (
                 <li key={id} className={css.movieItem}>
                   <Link to={`/Movies/${id}`} state={{ from: location }}>
-                    {poster_path ? (
+                    {poster ? (
                       <img
-                        src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                        src={`https://image.tmdb.org/t/p/w500/${poster}`}
                         alt={title}
                         width={250}
                         className={css.movieImage}
@@ -82,7 +93,11 @@ const Movies = () => {
                         className={css.noImage}
                       />
                     )}
-                    <p className={css.movieTitle}>{original_title}</p>
+                    <span className={css.movieDescription}>
+                      <p className={css.movieTitle}>
+                        {title} ({date})
+                      </p>
+                    </span>
                   </Link>
                 </li>
               ))}

@@ -31,7 +31,7 @@ const Cast = () => {
             <li key={actor.cast_id} className={css.castItem}>
               {actor.profile_path ? (
                 <img
-                  src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
+                  src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
                   alt={actor.name}
                   width={200}
                 />
@@ -44,8 +44,10 @@ const Cast = () => {
                 />
               )}
 
-              <p>{actor.name}</p>
-              <p>Character: {actor.character}</p>
+              <p className={css.castDescription}>{actor.name}</p>
+              <p className={css.castDescription}>
+                Character: {actor.character}
+              </p>
             </li>
           ))}
         </ul>

@@ -3,15 +3,22 @@
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
   padding-inline-start: 0;
 }
 
 .castItem {
-  width: 150px;
+  width: 200px;
 }
 .noImage {
   object-fit: cover;
-  max-width: 150px;
-  height: 225px;
+  max-width: 200px;
+  height: 375px;
+}
+
+.castDescription {
+  margin: 10px 0;
+  padding: 0 5px;
+  font-size: 16px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

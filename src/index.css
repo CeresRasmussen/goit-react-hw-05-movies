@@ -31,6 +31,9 @@ img {
   max-width: 100%;
   height: auto;
 }
+p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 ul {
   list-style: none;
 }

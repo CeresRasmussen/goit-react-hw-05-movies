@@ -1,10 +1,13 @@
 .container {
-  height: 100%;
+  min-height: 100%;
+  margin: 0 auto;
+  background-color: aliceblue;
 }
 .navigate {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 25px;
+  justify-content: center;
 }
 
 header {
@@ -16,10 +19,7 @@ header {
   display: flex;
   align-items: center;
   min-height: 64px;
-  padding-right: 24px;
-  padding-left: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding: 24px 12px;
   color: #fff;
   background-color: #bbc4f3;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
@@ -29,4 +29,38 @@ div[data-testid='three-circles-wrapper'] {
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-image: url(/src/images/4831203.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+footer {
+  color: black;
+  background-color: #bbc4f3;
+  padding: 24px 12px;
+  width: 100%;
+}
+
+.footerTitle {
+  font-size: 28px;
+  margin: 0 0 0 5px;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  display: inline;
+}
+
+.footerLogo {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
 }
