@@ -1,7 +1,7 @@
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  min-height: 768px;
+  min-height: calc(100vh - 112px);
   padding-top: 88px;
   padding-left: 25px;
   padding-right: 25px;
